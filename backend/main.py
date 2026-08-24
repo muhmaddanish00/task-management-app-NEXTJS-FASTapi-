@@ -10,7 +10,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Aapke Next.js frontend ka URL
+    allow_origins=["*"],  # Aapke Next.js frontend ka URL
     allow_credentials=True,
     allow_methods=["*"],  # Iska matlab hai GET, POST, PUT, DELETE sab allow hain
     allow_headers=["*"],
