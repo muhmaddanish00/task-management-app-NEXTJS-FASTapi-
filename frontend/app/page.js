@@ -8,7 +8,7 @@ export default function Home() {
   const [newBoardTitle, setNewBoardTitle] = useState("");
 
   const fetchBoards = () => {
-    fetch("http://localhost:8000/boards")
+    fetch("https://task-management-app-nextjs-fastapi-4.onrender.com/boards")
       .then((response) => response.json())
       .then((data) => setBoards(data))
       .catch((error) => console.error("Error:", error));
@@ -23,7 +23,7 @@ export default function Home() {
     if (!newBoardTitle) return;
 
     try {
-      const response = await fetch("http://localhost:8000/boards", {
+      const response = await fetch("https://task-management-app-nextjs-fastapi-4.onrender.com/boards", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newBoardTitle }),
@@ -44,7 +44,7 @@ export default function Home() {
     if (!window.confirm("Kya aap waqai yeh board delete karna chahte hain? Iske andar ki saari lists aur tasks bhi khatam ho jayenge!")) return;
 
     try {
-      const response = await fetch(`http://localhost:8000/boards/${boardId}`, {
+      const response = await fetch(`https://task-management-app-nextjs-fastapi-4.onrender.com/boards/${boardId}`, {
         method: "DELETE",
       });
 

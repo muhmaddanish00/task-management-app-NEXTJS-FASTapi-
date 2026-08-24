@@ -18,7 +18,7 @@ export default function BoardDetail() {
 
   // Backend se data mangwana
   const fetchBoardData = () => {
-    fetch(`http://localhost:8000/boards/${params.id}`)
+    fetch(`https://task-management-app-nextjs-fastapi-4.onrender.com/boards/${params.id}`)
       .then((response) => response.json())
       .then((data) => setBoard(data))
       .catch((error) => console.error("Error:", error));
@@ -34,7 +34,7 @@ export default function BoardDetail() {
     if (!newListTitle) return;
 
     try {
-      const response = await fetch("http://localhost:8000/lists", {
+      const response = await fetch("https://task-management-app-nextjs-fastapi-4.onrender.com/lists", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newListTitle, board_id: parseInt(params.id) }),
@@ -56,7 +56,7 @@ export default function BoardDetail() {
     if (!taskTitle) return;
 
     try {
-      const response = await fetch("http://localhost:8000/tasks", {
+      const response = await fetch("https://task-management-app-nextjs-fastapi-4.onrender.com/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -80,7 +80,7 @@ export default function BoardDetail() {
     if (!window.confirm("Kya aap waqai yeh list delete karna chahte hain? Iske saaray tasks bhi delete ho jayenge!")) return;
 
     try {
-      const response = await fetch(`http://localhost:8000/lists/${listId}`, {
+      const response = await fetch(`https://task-management-app-nextjs-fastapi-4.onrender.com/lists/${listId}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -94,7 +94,7 @@ export default function BoardDetail() {
   // Task Delete karne ka function
   const deleteTask = async (taskId) => {
     try {
-      const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+      const response = await fetch(`https://task-management-app-nextjs-fastapi-4.onrender.com/tasks/${taskId}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -108,7 +108,7 @@ export default function BoardDetail() {
   // Task ko dusri list mein move karne ka function
   const moveTask = async (task, newListId) => {
     try {
-      const response = await fetch(`http://localhost:8000/tasks/${task.id}`, {
+      const response = await fetch(`https://task-management-app-nextjs-fastapi-4.onrender.com/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -131,7 +131,7 @@ export default function BoardDetail() {
     if (!editTaskTitle.trim()) return; 
 
     try {
-      const response = await fetch(`http://localhost:8000/tasks/${task.id}`, {
+      const response = await fetch(`https://task-management-app-nextjs-fastapi-4.onrender.com/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
